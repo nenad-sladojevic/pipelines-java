@@ -5,19 +5,10 @@
 
 trigger:
 - master
-
-strategy:
-  matrix:
-    jdk10_linux:
-      imageName: "ubuntu-16.04"
-      jdk_version: "1.10"
-    jdk11_windows:
-      imageName: "vs2015-win2012r2"
-      jdk_version: "1.11"
-  maxParallel: 2
+- feature_/*
 
 pool:
-  vmImage: $(imageName)
+  vmImage: 'vs2015-win2012r2'
 
 steps:
 - task: Maven@3
@@ -25,7 +16,7 @@ steps:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: $(jdk_version)
+    jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
