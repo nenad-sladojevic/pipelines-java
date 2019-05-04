@@ -5,7 +5,7 @@
 
 trigger:
 - master
-- feature_/*
+- feature_*
 
 pool:
   vmImage: 'vs2015-win2012r2'
